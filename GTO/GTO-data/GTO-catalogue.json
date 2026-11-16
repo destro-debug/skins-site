@@ -1,0 +1,324 @@
+
+{
+  "game": {
+    "id": "gto",
+    "name": "Global Truck Online",
+    "shortName": "GTO"
+  },
+  "parts": [
+    {
+      "id": "cabin",
+      "name": "Cabin",
+      "supportsBrand": true,
+      "supportsVehicle": true
+    },
+    {
+      "id": "mirror",
+      "name": "Mirror",
+      "supportsBrand": true,
+      "supportsVehicle": false
+    },
+    {
+      "id": "trailer",
+      "name": "Trailer",
+      "supportsBrand": false,
+      "supportsVehicle": false
+    }
+  ],
+  "brands": [
+    {
+      "id": "volkswagen",
+      "name": "Volkswagen",
+      "aliases": ["VW"]
+    },
+    {
+      "id": "mercedes-benz",
+      "name": "Mercedes-Benz",
+      "aliases": ["MB"]
+    },
+    {
+      "id": "iveco",
+      "name": "Iveco",
+      "aliases": ["IAECO"]
+    },
+    {
+      "id": "volvo",
+      "name": "Volvo",
+      "aliases": ["Valvo"]
+    },
+    {
+      "id": "scania",
+      "name": "Scania",
+      "aliases": ["Scavia"]
+    },
+    {
+      "id": "chevrolet",
+      "name": "Chevrolet",
+      "aliases": []
+    },
+    {
+      "id": "ford",
+      "name": "Ford",
+      "aliases": ["Forp"]
+    },
+    {
+      "id": "fiat",
+      "name": "Fiat",
+      "aliases": ["Fit"]
+    }
+  ],
+  "vehicleTypes": [
+    {
+      "id": "bodywork",
+      "name": "Bodywork",
+      "aliases": ["carroceria"],
+      "codeType": "dual"
+    },
+    {
+      "id": "dump-truck",
+      "name": "Dump Truck",
+      "aliases": ["caçamba", "cacamba"],
+      "codeType": "dual"
+    },
+    {
+      "id": "box-truck",
+      "name": "Box Truck",
+      "aliases": ["baú", "bau"],
+      "codeType": "dual"
+    },
+    {
+      "id": "cattle-truck",
+      "name": "Cattle Truck",
+      "aliases": ["boiadeiro"],
+      "codeType": "dual"
+    },
+    {
+      "id": "4x2-truck",
+      "name": "4x2 Truck",
+      "aliases": [],
+      "codeType": "single"
+    },
+    {
+      "id": "6x2-truck",
+      "name": "6x2 Truck",
+      "aliases": [],
+      "codeType": "single"
+    },
+    {
+      "id": "cars",
+      "name": "Cars",
+      "aliases": ["carros"],
+      "codeType": "single"
+    }
+  ],
+  "models": [
+    {
+      "name": "Volvo FH",
+      "brand": "volvo",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Iveco S-WAY",
+      "brand": "iveco",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Scania R440",
+      "brand": "scania",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Scania R550",
+      "brand": "scania",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Volvo NH",
+      "brand": "volvo",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Volkswagen Titan",
+      "brand": "volkswagen",
+      "vehicleTypes": ["4x2-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Mercedes-Benz Axor",
+      "brand": "mercedes-benz",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Scania 124G",
+      "brand": "scania",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Scania 113H",
+      "brand": "scania",
+      "vehicleTypes": ["4x2-truck", "6x2-truck"]
+    },
+    {
+      "name": "Chevrolet S10",
+      "brand": "chevrolet",
+      "vehicleTypes": ["cars"]
+    },
+    {
+      "name": "Ford F250",
+      "brand": "ford",
+      "vehicleTypes": ["cars"]
+    },
+    {
+      "name": "Fiat Fiorino",
+      "brand": "fiat",
+      "vehicleTypes": ["cars"]
+    },
+    {
+      "name": "Chevrolet D60",
+      "brand": "chevrolet",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Mercedes-Benz 1620",
+      "brand": "mercedes-benz",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Mercedes-Benz 1113",
+      "brand": "mercedes-benz",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Volkswagen Bob",
+      "brand": "volkswagen",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Volvo VM",
+      "brand": "volvo",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Scania P-320",
+      "brand": "scania",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    },
+    {
+      "name": "Ford Cargo",
+      "brand": "ford",
+      "vehicleTypes": ["bodywork", "dump-truck", "box-truck", "cattle-truck"],
+      "dualCode": true
+    }
+  ],
+  "trailers": [
+    {
+      "id": "low-side-trailer",
+      "name": "Low-Side Trailer",
+      "aliases": ["Reboque Grade Baixa", "Carga Seca"],
+      "description": "Dry Cargo (2-Axle)"
+    },
+    {
+      "id": "bitrain-trailer",
+      "name": "Bitrain Trailer",
+      "aliases": ["Reboque Bitrem", "Bitrem Graneleiro"],
+      "description": "Double Grain Trailer"
+    },
+    {
+      "id": "grain-trailer-3-axle",
+      "name": "Grain Trailer (3-Axle)",
+      "aliases": ["Reboque Graneleiro (3 Eixos)"],
+      "description": ""
+    },
+    {
+      "id": "tank-trailer",
+      "name": "Tank Trailer",
+      "aliases": ["Reboque Tanque"],
+      "description": "Tanker Trailer"
+    },
+    {
+      "id": "forestry-trailer",
+      "name": "Forestry Trailer",
+      "aliases": ["Reboque Florestal", "Bitrem Florestal"],
+      "description": "Log Trailer"
+    },
+    {
+      "id": "long-bitrain-trailer-7-axle",
+      "name": "Long Bitrain Trailer (7-Axle)",
+      "aliases": ["Reboque Bitrem Longo (7 Eixos)"],
+      "description": ""
+    },
+    {
+      "id": "bitrain-tipper-trailer",
+      "name": "Bitrain Tipper Trailer",
+      "aliases": ["Bitrem Basculante", "Caçamba Bitrem"],
+      "description": "Double Dump Trailer"
+    },
+    {
+      "id": "lowboy-trailer",
+      "name": "Lowboy Trailer",
+      "aliases": ["Prancha", "Reboque Prancha"],
+      "description": "Flatbed Machinery Trailer"
+    },
+    {
+      "id": "box-trailer",
+      "name": "Box Trailer",
+      "aliases": ["Baú", "Reboque Baú"],
+      "description": "Dry Van Trailer"
+    },
+    {
+      "id": "grain-trailer-4-axle",
+      "name": "4-Axle Grain Trailer",
+      "aliases": ["Reboque Graneleiro 4 Eixos", "Carreta Vanderleia"],
+      "description": "Spread-Axle Grain Trailer"
+    }
+  ],
+  "codeRules": {
+    "singleCodeField": "skinCode",
+    "dualCodeFields": ["headCode", "bodyCode"],
+    "dualCodeVehicleTypes": [
+      "bodywork",
+      "dump-truck",
+      "box-truck",
+      "cattle-truck"
+    ],
+    "dualCodeParts": ["cabin"],
+    "mirrorRules": {
+      "requiresBrand": true,
+      "requiresVehicleName": false,
+      "requiresVehicleType": false,
+      "codeField": "skinCode"
+    },
+    "trailerRules": {
+      "requiresBrand": false,
+      "requiresVehicleName": false,
+      "requiresVehicleType": false,
+      "codeField": "skinCode"
+    }
+  },
+  "search": {
+    "fields": [
+      "skinName",
+      "displayName",
+      "brand",
+      "brandAliases",
+      "vehicleName",
+      "vehicleType",
+      "partType",
+      "aliases"
+    ],
+    "excludedFields": [
+      "imageUrl",
+      "skinCode",
+      "headCode",
+      "bodyCode",
+      "description"
+    ],
+    "suggestionLimit": 5
+  }
+}
