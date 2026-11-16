@@ -1,0 +1,279 @@
+
+{
+  "game": {
+    "id": "toe3",
+    "name": "Truckers of Europe 3",
+    "shortName": "TOE3",
+    "skinPage": "TOE3-skin.html",
+    "searchPage": "TOE3-search.html",
+    "browsePage": "TOE3-browse.html",
+    "dataFile": "TOE3-data/TOE3-skins.json"
+  },
+  "parts": [
+    {
+      "id": "cabin",
+      "name": "Cabin",
+      "aliases": ["cab", "truck cabin", "truck skin"]
+    },
+    {
+      "id": "trailer",
+      "name": "Trailer",
+      "aliases": ["trailers", "trailer skin"]
+    }
+  ],
+  "brands": [
+    {
+      "id": "dawn",
+      "name": "Dawn",
+      "realManufacturer": "DAF",
+      "aliases": ["dawn", "daf"],
+      "models": [
+        {
+          "id": "dawn-df",
+          "name": "Dawn Df"
+        }
+      ]
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "realManufacturer": "MAN",
+      "aliases": ["moon", "man"],
+      "models": [
+        {
+          "id": "moon-tha",
+          "name": "Moon THA"
+        },
+        {
+          "id": "moon-thx",
+          "name": "Moon THX"
+        }
+      ]
+    },
+    {
+      "id": "fiora",
+      "name": "Fiora",
+      "realManufacturer": "Ford",
+      "aliases": ["fiora", "ford"],
+      "models": [
+        {
+          "id": "fiora-fi-man",
+          "name": "Fiora Fi-Man"
+        }
+      ]
+    },
+    {
+      "id": "volcano",
+      "name": "Volcano",
+      "realManufacturer": "Volvo",
+      "aliases": ["volcano", "volvo"],
+      "models": [
+        {
+          "id": "volcano-vn",
+          "name": "Volcano VN"
+        }
+      ]
+    },
+    {
+      "id": "stream",
+      "name": "Stream",
+      "realManufacturer": "Scania",
+      "aliases": ["stream", "scania"],
+      "models": [
+        {
+          "id": "stream-st",
+          "name": "Stream ST"
+        },
+        {
+          "id": "stream-rt",
+          "name": "Stream RT"
+        },
+        {
+          "id": "stream-rt-legend-1995",
+          "name": "Stream RT Legend 1995"
+        },
+        {
+          "id": "stream-rt-legend-2004",
+          "name": "Stream RT Legend 2004"
+        },
+        {
+          "id": "stream-rt-legend-2009",
+          "name": "Stream RT Legend 2009"
+        },
+        {
+          "id": "stream-rt-legend-2013",
+          "name": "Stream RT Legend 2013"
+        }
+      ]
+    },
+    {
+      "id": "renovate",
+      "name": "Renovate",
+      "realManufacturer": "Renault",
+      "aliases": ["renovate", "renault"],
+      "models": [
+        {
+          "id": "renovate-r-ranger-2013",
+          "name": "Renovate R - Ranger 2013"
+        },
+        {
+          "id": "renovate-r-ranger-2021",
+          "name": "Renovate R - Ranger 2021"
+        }
+      ]
+    },
+    {
+      "id": "merieles",
+      "name": "Merieles",
+      "realManufacturer": "Mercedes-Benz",
+      "aliases": [
+        "merieles",
+        "mercedes",
+        "mercedes benz",
+        "mercedes-benz"
+      ],
+      "models": [
+        {
+          "id": "merieles-arox",
+          "name": "Merieles Arox"
+        },
+        {
+          "id": "merieles-antares",
+          "name": "Merieles Antares"
+        }
+      ]
+    },
+    {
+      "id": "iveco",
+      "name": "Iveco",
+      "realManufacturer": "Iveco",
+      "aliases": ["iveco"],
+      "models": [],
+      "status": "coming-soon"
+    }
+  ],
+  "trailers": [
+    {
+      "id": "mixer",
+      "name": "Mixer",
+      "aliases": ["concrete mixer", "cement mixer"]
+    },
+    {
+      "id": "tipper",
+      "name": "Tipper",
+      "aliases": ["dump trailer"]
+    },
+    {
+      "id": "tanker",
+      "name": "Tanker",
+      "aliases": ["tank trailer"]
+    },
+    {
+      "id": "cistern",
+      "name": "Cistern",
+      "aliases": ["liquid tanker"]
+    },
+    {
+      "id": "inloader",
+      "name": "InLoader",
+      "aliases": ["in loader"]
+    },
+    {
+      "id": "closed-box",
+      "name": "Closed Box",
+      "aliases": ["box trailer", "closed box trailer"]
+    },
+    {
+      "id": "double-tarp",
+      "name": "Double Tarp",
+      "aliases": ["double tarp trailer"]
+    },
+    {
+      "id": "brick-trailer",
+      "name": "Brick Trailer",
+      "aliases": ["brick"]
+    },
+    {
+      "id": "curtain-side",
+      "name": "Curtain Side",
+      "aliases": ["curtain sider"]
+    },
+    {
+      "id": "refrigerated",
+      "name": "Refrigerated",
+      "aliases": ["reefer", "refrigerated trailer"]
+    },
+    {
+      "id": "double-open",
+      "name": "Double Open",
+      "aliases": ["open trailer"]
+    },
+    {
+      "id": "curtain-side-2",
+      "name": "Curtain Side 2",
+      "aliases": ["curtain side two"]
+    },
+    {
+      "id": "cement-bulker",
+      "name": "Cement Bulker",
+      "aliases": ["cement tanker", "bulker"]
+    },
+    {
+      "id": "double-refrigerated",
+      "name": "Double Refrigerated",
+      "aliases": ["double reefer"]
+    }
+  ],
+  "recordSchema": {
+    "required": [
+      "id",
+      "skinName",
+      "vehicleName",
+      "displayName",
+      "partType",
+      "brand",
+      "imageUrl"
+    ],
+    "optional": [
+      "brandAliases",
+      "description",
+      "addedAt"
+    ],
+    "displayNameFormat": "{skinName} | {vehicleName}",
+    "partTypes": ["cabin", "trailer"],
+    "imagePolicy": {
+      "oneMainImageRequired": true,
+      "additionalAnglesOptional": true,
+      "sameMainImageForTileAndDetail": true
+    },
+    "searchFields": [
+      "skinName",
+      "displayName",
+      "brand",
+      "brandAliases",
+      "vehicleName",
+      "partType"
+    ],
+    "excludedSearchFields": [
+      "id",
+      "imageUrl",
+      "description"
+    ]
+  },
+  "search": {
+    "caseSensitive": false,
+    "partialMatching": true,
+    "normalizeAccents": true,
+    "suggestionLimit": 5,
+    "suggestionImages": false,
+    "deduplicateBy": "id",
+    "fullResultsPerRowMobile": 2,
+    "brandAliasBehavior": "resolve-to-fantasy-brand"
+  },
+  "display": {
+    "brandNames": "fantasy",
+    "manufacturerAliasesVisibleInBrandCollections": false,
+    "emptyCollectionMessage": "No skins have been added to this collection yet.",
+    "comingSoonMessage": "This brand's skin collection is coming soon."
+  }
+}
