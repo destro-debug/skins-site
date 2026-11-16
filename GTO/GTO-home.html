@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101512">
+
+  <meta
+    name="description"
+    content="Explore custom Global Truck Online skins in the DST SKIN CATALOGUE."
+  >
+
+  <title>Global Truck Online | DST SKIN CATALOGUE</title>
+
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../shared/shared-assets/site-logo.png">
+  <link rel="stylesheet" href="../shared/shared-styles/site.css">
+
+  <style>
+    .gto-page {
+      width: min(100% - 40px, 1180px);
+      margin: 0 auto;
+      padding-bottom: 70px;
+    }
+
+    .gto-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 76px;
+      border-bottom: 1px solid var(--border, #303a33);
+    }
+
+    .gto-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      color: var(--text, #f1f0e9);
+      text-decoration: none;
+    }
+
+    .gto-brand img {
+      width: 39px;
+      height: 39px;
+      object-fit: contain;
+    }
+
+    .gto-brand-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .gto-brand-text strong {
+      font-size: 0.92rem;
+      letter-spacing: 0.03em;
+    }
+
+    .gto-brand-text span {
+      color: var(--muted, #a7afa8);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .gto-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .gto-icon-button {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border, #303a33);
+      border-radius: 11px;
+      background: var(--surface, #171e1a);
+      color: var(--text, #f1f0e9);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .gto-icon-button:hover {
+      border-color: var(--accent, #e6a34b);
+      transform: translateY(-2px);
+    }
+
+    .gto-icon-button svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .gto-hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 310px;
+      margin-top: 28px;
+      padding: clamp(28px, 6vw, 64px);
+      border: 1px solid var(--border, #303a33);
+      border-radius: 18px;
+      background:
+        linear-gradient(115deg, rgba(16, 21, 18, 0.98), rgba(29, 42, 33, 0.88)),
+        var(--surface, #171e1a);
+    }
+
+    .gto-hero::after {
+      content: "GTO";
+      position: absolute;
+      right: -12px;
+      bottom: -55px;
+      color: rgba(230, 163, 75, 0.055);
+      font-size: clamp(9rem, 27vw, 19rem);
+      font-weight: 900;
+      letter-spacing: -0.09em;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .gto-eyebrow {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 15px;
+      color: var(--accent, #e6a34b);
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .gto-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin: 0;
+      color: var(--text, #f1f0e9);
+      font-size: clamp(2.3rem, 7vw, 4.7rem);
+      font-weight: 800;
+      letter-spacing: -0.065em;
+      line-height: 1.02;
+    }
+
+    .gto-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      margin: 19px 0 0;
+      color: var(--muted, #a7afa8);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .gto-hero-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 27px;
+    }
+
+    .gto-primary-link,
+    .gto-secondary-link {
+      min-height: 47px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 0.87rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .gto-primary-link {
+      background: var(--accent, #e6a34b);
+      color: #171914;
+    }
+
+    .gto-secondary-link {
+      border-color: var(--border, #303a33);
+      background: var(--surface, #171e1a);
+      color: var(--text, #f1f0e9);
+    }
+
+    .gto-primary-link:hover,
+    .gto-secondary-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .gto-section {
+      margin-top: 58px;
+    }
+
+    .gto-section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 21px;
+    }
+
+    .gto-section-heading h2 {
+      margin: 0;
+      color: var(--text, #f1f0e9);
+      font-size: clamp(1.35rem, 4vw, 1.8rem);
+      letter-spacing: -0.045em;
+    }
+
+    .gto-section-heading p {
+      margin: 7px 0 0;
+      color: var(--muted, #a7afa8);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .gto-section-link {
+      flex-shrink: 0;
+      color: var(--accent, #e6a34b);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .gto-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .gto-category-card {
+      min-height: 145px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 21px;
+      border: 1px solid var(--border, #303a33);
+      border-radius: 13px;
+      background: var(--surface, #171e1a);
+      color: var(--text, #f1f0e9);
+      text-decoration: none;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .gto-category-card:hover {
+      border-color: var(--accent, #e6a34b);
+      transform: translateY(-3px);
+    }
+
+    .gto-category-number {
+      color: var(--accent, #e6a34b);
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+    }
+
+    .gto-category-card strong {
+      font-size: 1.12rem;
+    }
+
+    .gto-category-card span:last-child {
+      margin-top: 6px;
+      color: var(--muted, #a7afa8);
+      font-size: 0.76rem;
+    }
+
+    .gto-brand-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .gto-brand-card {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 15px;
+      border: 1px solid var(--border, #303a33);
+      border-radius: 11px;
+      background: var(--surface, #171e1a);
+      color: var(--text, #f1f0e9);
+      font-size: 0.84rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .gto-brand-card:hover {
+      border-color: var(--accent, #e6a34b);
+      transform: translateY(-2px);
+    }
+
+    .gto-brand-card span:last-child {
+      color: var(--accent, #e6a34b);
+      font-size: 1.1rem;
+    }
+
+    .gto-vehicle-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .gto-vehicle-card {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      border: 1px solid var(--border, #303a33);
+      border-radius: 10px;
+      background: var(--surface, #171e1a);
+      color: var(--text, #f1f0e9);
+      font-size: 0.82rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .gto-vehicle-card:hover {
+      border-color: var(--accent, #e6a34b);
+      transform: translateY(-2px);
+    }
+
+    .gto-latest-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .gto-latest-status {
+      grid-column: 1 / -1;
+      padding: 30px 18px;
+      border: 1px dashed var(--border, #303a33);
+      border-radius: 12px;
+      color: var(--muted, #a7afa8);
+      font-size: 0.87rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .gto-footer {
+      margin-top: 65px;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--border, #303a33);
+      color: var(--muted, #a7afa8);
+      font-size: 0.76rem;
+      text-align: center;
+    }
+
+    .gto-footer strong {
+      color: var(--text, #f1f0e9);
+    }
+
+    @media (max-width: 760px) {
+      .gto-brand-grid,
+      .gto-vehicle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gto-category-grid {
+        gap: 10px;
+      }
+
+      .gto-category-card {
+        min-height: 130px;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gto-page {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .gto-topbar {
+        min-height: 67px;
+      }
+
+      .gto-brand img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .gto-brand-text strong {
+        font-size: 0.8rem;
+      }
+
+      .gto-brand-text span {
+        font-size: 0.61rem;
+      }
+
+      .gto-icon-button {
+        width: 39px;
+        height: 39px;
+      }
+
+      .gto-hero {
+        min-height: 330px;
+        margin-top: 19px;
+        padding: 26px 21px;
+        border-radius: 14px;
+      }
+
+      .gto-hero p {
+        font-size: 0.87rem;
+      }
+
+      .gto-section {
+        margin-top: 43px;
+      }
+
+      .gto-section-heading {
+        align-items: start;
+      }
+
+      .gto-category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gto-category-card {
+        min-height: 108px;
+      }
+
+      .gto-latest-grid {
+        gap: 10px;
+      }
+
+      .gto-primary-link,
+      .gto-secondary-link {
+        min-height: 44px;
+        padding: 0 15px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gto-icon-button,
+      .gto-primary-link,
+      .gto-secondary-link,
+      .gto-category-card,
+      .gto-brand-card,
+      .gto-vehicle-card {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="gto-page" data-gto-home>
+
+    <!-- Navigation -->
+    <header class="gto-topbar">
+      <a class="gto-brand" href="../index.html" aria-label="DST Skin Catalogue home">
+        <img
+          src="../shared/shared-assets/site-logo.png"
+          alt=""
+          width="39"
+          height="39"
+        >
+
+        <span class="gto-brand-text">
+          <strong>DST SKIN CATALOGUE</strong>
+          <span>Global Truck Online</span>
+        </span>
+      </a>
+
+      <nav class="gto-nav-actions" aria-label="Main navigation">
+        <a
+          class="gto-icon-button"
+          href="./GTO-search.html"
+          aria-label="Search GTO skins"
+          title="Search skins"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 4.5 4.5"></path>
+          </svg>
+        </a>
+
+        <button
+          class="gto-icon-button"
+          type="button"
+          data-install-button
+          aria-label="Install DST Skin Catalogue"
+          title="Install catalogue"
+          hidden
+          disabled
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 3v12"></path>
+            <path d="m7 10 5 5 5-5"></path>
+            <path d="M5 19h14"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="gto-hero">
+      <span class="gto-eyebrow">Game catalogue / 01</span>
+
+      <h1>Global Truck Online.</h1>
+
+      <p>
+        Discover custom truck skins, explore different manufacturers
+        and find the designs that belong on your next journey.
+      </p>
+
+      <div class="gto-hero-actions">
+        <a class="gto-primary-link" href="./GTO-search.html">
+          Explore skins
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-secondary-link" href="./GTO-browse.html">
+          Browse collections
+        </a>
+      </div>
+    </section>
+
+    <!-- Parts -->
+    <section class="gto-section" aria-labelledby="gto-parts-title">
+      <div class="gto-section-heading">
+        <div>
+          <h2 id="gto-parts-title">Browse by part</h2>
+          <p>Choose the type of skin you're looking for.</p>
+        </div>
+      </div>
+
+      <div class="gto-category-grid" data-gto-part-links>
+        <a
+          class="gto-category-card"
+          href="./GTO-browse.html?kind=part&amp;value=cabin"
+        >
+          <span class="gto-category-number">01 / CABIN</span>
+          <strong>Cabin skins</strong>
+          <span>Truck cabin designs</span>
+        </a>
+
+        <a
+          class="gto-category-card"
+          href="./GTO-browse.html?kind=part&amp;value=mirror"
+        >
+          <span class="gto-category-number">02 / MIRROR</span>
+          <strong>Mirror skins</strong>
+          <span>Custom mirror and glass designs</span>
+        </a>
+
+        <a
+          class="gto-category-card"
+          href="./GTO-browse.html?kind=part&amp;value=trailer"
+        >
+          <span class="gto-category-number">03 / TRAILER</span>
+          <strong>Trailer skins</strong>
+          <span>Trailer and cargo designs</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="gto-section" aria-labelledby="gto-brands-title">
+      <div class="gto-section-heading">
+        <div>
+          <h2 id="gto-brands-title">Explore manufacturers</h2>
+          <p>Find skins by your favourite truck brand.</p>
+        </div>
+
+        <a class="gto-section-link" href="./GTO-browse.html">
+          All collections
+        </a>
+      </div>
+
+      <div class="gto-brand-grid" data-gto-brand-links>
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=volkswagen">
+          <span>Volkswagen</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=mercedes-benz">
+          <span>Mercedes-Benz</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=iveco">
+          <span>Iveco</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=volvo">
+          <span>Volvo</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=scania">
+          <span>Scania</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=chevrolet">
+          <span>Chevrolet</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=ford">
+          <span>Ford</span><span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="gto-brand-card" href="./GTO-browse.html?kind=brand&amp;value=fiat">
+          <span>Fiat</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Vehicle types -->
+    <section class="gto-section" aria-labelledby="gto-vehicles-title">
+      <div class="gto-section-heading">
+        <div>
+          <h2 id="gto-vehicles-title">Browse by vehicle</h2>
+          <p>Explore skins by vehicle category.</p>
+        </div>
+      </div>
+
+      <div class="gto-vehicle-grid" data-gto-vehicle-links>
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=bodywork">
+          Bodywork
+        </a>
+
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=dump-truck">
+          Dump truck
+        </a>
+
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=box-truck">
+          Box truck
+        </a>
+
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=cattle-truck">
+          Cattle truck
+        </a>
+
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=4x2-truck">
+          4x2 truck
+        </a>
+
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=6x2-truck">
+          6x2 truck
+        </a>
+
+        <a class="gto-vehicle-card" href="./GTO-browse.html?kind=vehicleType&amp;value=car">
+          Cars
+        </a>
+      </div>
+    </section>
+
+    <!-- Latest skins -->
+    <section class="gto-section" aria-labelledby="gto-latest-title">
+      <div class="gto-section-heading">
+        <div>
+          <h2 id="gto-latest-title">Recently added</h2>
+          <p>Fresh additions to the GTO collection.</p>
+        </div>
+
+        <a class="gto-section-link" href="./GTO-search.html">
+          Find more
+        </a>
+      </div>
+
+      <div class="gto-latest-grid" data-gto-latest-grid>
+        <p class="gto-latest-status" data-gto-latest-status>
+          Loading the latest skins...
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gto-footer">
+      <p>
+        <strong>DST SKIN CATALOGUE</strong>
+        <span aria-hidden="true"> · </span>
+        Global Truck Online
+      </p>
+
+      <p>
+        Independent fan-made catalogue. Not affiliated with the game developers.
+      </p>
+
+      <p>
+        © <span data-current-year></span> DST SKIN CATALOGUE
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="../shared/shared-js/common.js" defer></script>
+  <script src="../shared/shared-js/navigation.js" defer></script>
+  <script src="../shared/shared-js/search.js" defer></script>
+  <script src="../shared/shared-js/browse.js" defer></script>
+  <script src="../shared/shared-js/skin-renderer.js" defer></script>
+  <script src="./GTO-js/GTO.js" defer></script>
+</body>
+  </html>
+  
