@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151a18">
+  <meta name="description" content="Search cabin and trailer skins for Truckers of Europe 3 in the DST SKIN CATALOGUE.">
+  <title>Search TOE3 Skins | DST SKIN CATALOGUE</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../shared/shared-styles/site.css">
+
+  <style>
+    .toe-search-page {
+      max-width: 1000px;
+      width: calc(100% - 36px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      color: #f4f0e8;
+    }
+
+    .toe-search-nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .toe-search-nav a {
+      color: #f4f0e8;
+      text-decoration: none;
+    }
+
+    .toe-search-brand {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .07em;
+    }
+
+    .toe-search-nav-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .toe-search-nav-actions a,
+    .toe-search-nav-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      background: transparent;
+      color: #f4f0e8;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toe-search-intro {
+      margin: 44px 0 25px;
+    }
+
+    .toe-search-eyebrow {
+      margin: 0 0 10px;
+      color: #d99a52;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .toe-search-intro h1 {
+      margin: 0;
+      font-size: clamp(29px, 6vw, 45px);
+      letter-spacing: -.04em;
+    }
+
+    .toe-search-intro p {
+      max-width: 530px;
+      margin: 12px 0 0;
+      color: #aab3ac;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .toe-search-box {
+      position: relative;
+      z-index: 5;
+    }
+
+    .toe-search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 58px;
+      padding: 0 15px;
+      border: 1px solid rgba(217,154,82,.42);
+      border-radius: 10px;
+      background: #1d2420;
+    }
+
+    .toe-search-icon {
+      color: #d99a52;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .toe-search-input {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #f4f0e8;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .toe-search-input::placeholder {
+      color: #77827a;
+    }
+
+    .toe-search-clear {
+      display: none;
+      padding: 6px;
+      border: 0;
+      background: transparent;
+      color: #d99a52;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toe-search-clear.is-visible {
+      display: inline-block;
+    }
+
+    .toe-suggestion-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      display: none;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      background: #1d2420;
+      box-shadow: 0 16px 35px rgba(0,0,0,.28);
+    }
+
+    .toe-suggestion-panel.is-open {
+      display: block;
+    }
+
+    .toe-suggestion-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toe-suggestion-link {
+      display: block;
+      padding: 15px 17px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: #e8e8df;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background .15s ease;
+    }
+
+    .toe-suggestion-link:hover,
+    .toe-suggestion-link:focus-visible {
+      background: rgba(255,255,255,.06);
+    }
+
+    .toe-suggestion-empty {
+      padding: 16px;
+      color: #aab3ac;
+      font-size: 12px;
+    }
+
+    .toe-see-more {
+      display: none;
+      padding: 14px 17px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #d99a52;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .toe-see-more.is-visible {
+      display: block;
+    }
+
+    .toe-search-results {
+      margin-top: 38px;
+    }
+
+    .toe-results-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 17px;
+    }
+
+    .toe-results-heading h2 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .toe-results-heading p {
+      margin: 7px 0 0;
+      color: #aab3ac;
+      font-size: 12px;
+    }
+
+    .toe-results-count {
+      color: #d99a52;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .toe-results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .toe-results-grid .skin-card {
+      display: block;
+      overflow: hidden;
+      min-width: 0;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 10px;
+      background: #1d2420;
+      color: #f4f0e8;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .toe-results-grid .skin-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217,154,82,.45);
+    }
+
+    .toe-results-grid .skin-card-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #252d28;
+    }
+
+    .toe-results-grid .skin-card-content {
+      padding: 13px;
+    }
+
+    .toe-results-grid .skin-card-title {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .toe-results-grid .skin-card-meta {
+      margin: 7px 0 0;
+      color: #929c94;
+      font-size: 11px;
+    }
+
+    .toe-results-grid .results-state {
+      grid-column: 1 / -1;
+      padding: 30px 18px;
+      border: 1px dashed rgba(255,255,255,.13);
+      border-radius: 10px;
+      color: #aab3ac;
+      text-align: center;
+    }
+
+    .toe-results-grid .results-state strong,
+    .toe-results-grid .results-state span {
+      display: block;
+    }
+
+    .toe-results-grid .results-state strong {
+      margin-bottom: 7px;
+      color: #f4f0e8;
+    }
+
+    .toe-default-state {
+      margin-top: 36px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
+      background: #1d2420;
+      color: #aab3ac;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .toe-default-state strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #f4f0e8;
+    }
+
+    .toe-search-footer {
+      margin-top: 55px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      color: #929c94;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .toe-search-footer a {
+      color: #d99a52;
+      text-decoration: none;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 380px) {
+      .toe-search-page {
+        width: calc(100% - 24px);
+      }
+
+      .toe-search-brand {
+        font-size: 11px;
+      }
+
+      .toe-search-nav-actions a,
+      .toe-search-nav-actions button {
+        padding: 0 9px;
+        font-size: 11px;
+      }
+
+      .toe-results-grid {
+        gap: 10px;
+      }
+
+      .toe-results-grid .skin-card-content {
+        padding: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toe-search-page *,
+      .toe-search-page *::before,
+      .toe-search-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="toe-search-page">
+    <nav class="toe-search-nav" aria-label="Main navigation">
+      <a class="toe-search-brand" href="../index.html">
+        DST SKIN CATALOGUE
+      </a>
+
+      <div class="toe-search-nav-actions">
+        <a href="TOE3-home.html">Home</a>
+
+        <button
+          type="button"
+          data-back-button
+          aria-label="Go back"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          data-install-button
+          hidden
+        >
+          Install
+        </button>
+      </div>
+    </nav>
+
+    <header class="toe-search-intro">
+      <p class="toe-search-eyebrow">TOE3 / Catalogue search</p>
+      <h1>Find your next skin.</h1>
+      <p>
+        Search by skin name, truck model, brand, trailer type,
+        or manufacturer name.
+      </p>
+    </header>
+
+    <section class="toe-search-box search-box" aria-label="Skin search">
+      <div class="toe-search-input-wrap">
+        <span class="toe-search-icon" aria-hidden="true">⌕</span>
+
+        <input
+          class="toe-search-input"
+          type="search"
+          data-toe3-search-input
+          placeholder="Search TOE3 skins..."
+          autocomplete="off"
+          aria-label="Search TOE3 skins"
+          aria-expanded="false"
+          aria-controls="toe3-suggestion-list"
+        >
+
+        <button
+          class="toe-search-clear"
+          type="button"
+          data-toe3-search-clear
+          aria-label="Clear search"
+        >
+          Clear
+        </button>
+      </div>
+
+      <div
+        class="toe-suggestion-panel"
+        data-toe3-suggestion-panel
+      >
+        <div
+          class="toe-suggestion-list"
+          id="toe3-suggestion-list"
+          data-toe3-suggestion-list
+          role="listbox"
+        ></div>
+
+        <a
+          class="toe-see-more"
+          data-toe3-see-more
+          href="TOE3-search.html?view=all"
+        >
+          See all results
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="toe-search-results"
+      data-toe3-results-section
+      hidden
+    >
+      <div class="toe-results-heading">
+        <div>
+          <h2>Search results</h2>
+          <p data-toe3-results-query></p>
+        </div>
+
+        <span
+          class="toe-results-count"
+          data-toe3-results-count
+        ></span>
+      </div>
+
+      <div
+        class="toe-results-grid"
+        data-toe3-results-grid
+        aria-live="polite"
+      ></div>
+    </section>
+
+    <section
+      class="toe-default-state"
+      data-toe3-default-state
+    >
+      <strong>Ready when you are.</strong>
+      Start typing to explore the TOE3 skin collection.
+      Your search can match both fantasy brand names and their
+      real-world manufacturer names.
+    </section>
+
+    <footer class="toe-search-footer">
+      <p>
+        <a href="TOE3-home.html">TOE3 Home</a>
+        ·
+        <a href="../index.html">DST SKIN CATALOGUE</a>
+      </p>
+      <p>© <span data-current-year>2026</span> DST SKIN CATALOGUE</p>
+    </footer>
+  </main>
+
+  <script src="../shared/shared-js/common.js" defer></script>
+  <script src="../shared/shared-js/navigation.js" defer></script>
+  <script src="../shared/shared-js/search.js" defer></script>
+  <script src="../shared/shared-js/browse.js" defer></script>
+  <script src="../shared/shared-js/skin-renderer.js" defer></script>
+  <script src="TOE3-js/TOE3.js" defer></script>
+</body>
+</html>
