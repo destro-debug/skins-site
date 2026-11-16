@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151a18">
+  <meta name="description" content="View custom Truckers of Europe 3 skins in the DST SKIN CATALOGUE.">
+  <title>Skin Details | DST SKIN CATALOGUE</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../shared/shared-styles/site.css">
+
+  <style>
+    .toe-skin-page {
+      width: min(100% - 36px, 1050px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      color: #f4f0e8;
+    }
+
+    .toe-skin-nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .toe-skin-brand {
+      color: #f4f0e8;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-decoration: none;
+    }
+
+    .toe-skin-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toe-skin-nav-actions a,
+    .toe-skin-nav-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      background: transparent;
+      color: #f4f0e8;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toe-skin-breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 28px 0 22px;
+      color: #929c94;
+      font-size: 11px;
+    }
+
+    .toe-skin-breadcrumb a {
+      color: #d99a52;
+      text-decoration: none;
+    }
+
+    .toe-skin-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .85fr);
+      align-items: start;
+      gap: 30px;
+    }
+
+    .toe-skin-image-wrap {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      background: #1d2420;
+    }
+
+    .toe-skin-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      object-fit: contain;
+      background: #1d2420;
+    }
+
+    .toe-skin-image-caption {
+      padding: 11px 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #929c94;
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .toe-skin-info {
+      padding-top: 5px;
+    }
+
+    .toe-skin-eyebrow {
+      margin: 0 0 11px;
+      color: #d99a52;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .toe-skin-info h1 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -.04em;
+      overflow-wrap: anywhere;
+    }
+
+    .toe-skin-description {
+      margin: 17px 0 0;
+      color: #aab3ac;
+      font-size: 13px;
+      line-height: 1.85;
+      overflow-wrap: anywhere;
+    }
+
+    .toe-skin-details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .toe-skin-detail {
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 9px;
+      background: #1d2420;
+    }
+
+    .toe-skin-detail-label {
+      display: block;
+      margin-bottom: 7px;
+      color: #929c94;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .toe-skin-detail-value {
+      display: block;
+      color: #f4f0e8;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .toe-skin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .toe-skin-copy-button {
+      min-height: 46px;
+      padding: 0 17px;
+      border: 0;
+      border-radius: 8px;
+      background: #d99a52;
+      color: #171b18;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .toe-skin-copy-button:hover {
+      transform: translateY(-2px);
+      background: #e8ad69;
+    }
+
+    .toe-skin-copy-button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .toe-skin-copy-status {
+      min-height: 18px;
+      margin: 10px 0 0;
+      color: #d99a52;
+      font-size: 11px;
+    }
+
+    .toe-skin-loading,
+    .toe-skin-error {
+      padding: 48px 20px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px;
+      background: #1d2420;
+      text-align: center;
+    }
+
+    .toe-skin-loading p,
+    .toe-skin-error p {
+      color: #aab3ac;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .toe-skin-error h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .toe-skin-error a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      margin-top: 12px;
+      padding: 0 15px;
+      border-radius: 8px;
+      background: #d99a52;
+      color: #171b18;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .toe-skin-footer {
+      margin-top: 55px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      color: #929c94;
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .toe-skin-footer a {
+      color: #d99a52;
+      text-decoration: none;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .toe-skin-layout {
+        grid-template-columns: 1fr;
+        gap: 23px;
+      }
+
+      .toe-skin-info {
+        padding-top: 0;
+      }
+
+      .toe-skin-image {
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .toe-skin-page {
+        width: calc(100% - 24px);
+      }
+
+      .toe-skin-brand {
+        font-size: 11px;
+      }
+
+      .toe-skin-nav-actions a,
+      .toe-skin-nav-actions button {
+        min-height: 36px;
+        padding: 0 9px;
+        font-size: 11px;
+      }
+
+      .toe-skin-details {
+        gap: 8px;
+      }
+
+      .toe-skin-detail {
+        padding: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toe-skin-page *,
+      .toe-skin-page *::before,
+      .toe-skin-page *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="toe-skin-page">
+    <nav class="toe-skin-nav" aria-label="Main navigation">
+      <a class="toe-skin-brand" href="../index.html">
+        DST SKIN CATALOGUE
+      </a>
+
+      <div class="toe-skin-nav-actions">
+        <a href="TOE3-home.html">Home</a>
+        <a href="TOE3-search.html">Search</a>
+
+        <button
+          type="button"
+          data-back-button
+          aria-label="Go back"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          data-install-button
+          hidden
+        >
+          Install
+        </button>
+      </div>
+    </nav>
+
+    <div class="toe-skin-breadcrumb">
+      <a href="TOE3-home.html">TOE3</a>
+      <span>/</span>
+      <a href="TOE3-browse.html">Collections</a>
+      <span>/</span>
+      <span data-toe3-breadcrumb-current>Skin details</span>
+    </div>
+
+    <section
+      class="toe-skin-loading"
+      data-toe3-skin-loading
+      aria-live="polite"
+    >
+      <p>Loading skin details...</p>
+    </section>
+
+    <section
+      class="toe-skin-error"
+      data-toe3-skin-error
+      hidden
+      aria-live="polite"
+    >
+      <h1 data-toe3-error-title>Skin unavailable</h1>
+      <p data-toe3-error-message>
+        This skin could not be found in the catalogue.
+      </p>
+      <a href="TOE3-home.html">Return to TOE3 home</a>
+    </section>
+
+    <section
+      class="toe-skin-layout"
+      data-toe3-skin-content
+      hidden
+    >
+      <div class="toe-skin-image-wrap">
+        <img
+          class="toe-skin-image"
+          data-toe3-skin-image
+          src=""
+          alt="Truckers of Europe 3 custom skin"
+          loading="eager"
+          decoding="async"
+        >
+
+        <div class="toe-skin-image-caption">
+          TRUCKERS OF EUROPE 3 · CUSTOM SKIN
+        </div>
+      </div>
+
+      <div class="toe-skin-info">
+        <p class="toe-skin-eyebrow">Skin details</p>
+
+        <h1 data-toe3-skin-name>Skin name</h1>
+
+        <p
+          class="toe-skin-description"
+          data-toe3-skin-description
+        ></p>
+
+        <div class="toe-skin-details">
+          <div
+            class="toe-skin-detail"
+            data-toe3-detail="brand"
+          >
+            <span class="toe-skin-detail-label">Brand</span>
+            <span
+              class="toe-skin-detail-value"
+              data-toe3-brand
+            ></span>
+          </div>
+
+          <div
+            class="toe-skin-detail"
+            data-toe3-detail="vehicle"
+          >
+            <span class="toe-skin-detail-label">Vehicle / Trailer</span>
+            <span
+              class="toe-skin-detail-value"
+              data-toe3-vehicle
+            ></span>
+          </div>
+
+          <div
+            class="toe-skin-detail"
+            data-toe3-detail="part"
+          >
+            <span class="toe-skin-detail-label">Category</span>
+            <span
+              class="toe-skin-detail-value"
+              data-toe3-part-type
+            ></span>
+          </div>
+        </div>
+
+        <div class="toe-skin-actions">
+          <button
+            class="toe-skin-copy-button"
+            type="button"
+            data-toe3-copy-image
+            disabled
+          >
+            Copy image URL
+          </button>
+        </div>
+
+        <p
+          class="toe-skin-copy-status"
+          data-toe3-copy-status
+          role="status"
+          aria-live="polite"
+        ></p>
+      </div>
+    </section>
+
+    <footer class="toe-skin-footer">
+      <p>
+        <a href="TOE3-home.html">TOE3 Home</a>
+        ·
+        <a href="TOE3-browse.html">Browse skins</a>
+        ·
+        <a href="../index.html">DST SKIN CATALOGUE</a>
+      </p>
+      <p>© <span data-current-year>2026</span> DST SKIN CATALOGUE</p>
+    </footer>
+  </main>
+
+  <script src="../shared/shared-js/common.js" defer></script>
+  <script src="../shared/shared-js/navigation.js" defer></script>
+  <script src="../shared/shared-js/search.js" defer></script>
+  <script src="../shared/shared-js/browse.js" defer></script>
+  <script src="../shared/shared-js/skin-renderer.js" defer></script>
+  <script src="TOE3-js/TOE3.js" defer></script>
+</body>
+</html>
