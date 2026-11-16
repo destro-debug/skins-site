@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171b19">
+  <meta name="description" content="Explore Global Truck Online skins by brand, part category and vehicle type at DST SKIN CATALOGUE.">
+  <title>Browse GTO Skins | DST SKIN CATALOGUE</title>
+
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../shared/shared-assets/site-logo.png">
+  <link rel="stylesheet" href="../shared/shared-styles/site.css">
+
+  <style>
+    :root {
+      --gto-accent: #e77b38;
+      --gto-surface: #202622;
+      --gto-border: rgba(232, 239, 233, 0.1);
+      --gto-muted: #a3ada5;
+      --gto-text: #f1f3ed;
+    }
+
+    body {
+      background: #171b19;
+      color: var(--gto-text);
+    }
+
+    .browse-page {
+      width: min(100% - 36px, 1100px);
+      margin: 0 auto;
+      padding: 36px 0 72px;
+    }
+
+    .browse-heading {
+      margin-bottom: 32px;
+    }
+
+    .browse-eyebrow {
+      color: var(--gto-accent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .browse-heading h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .browse-heading p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--gto-muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .browse-section {
+      margin-top: 38px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.025em;
+    }
+
+    .section-kicker {
+      color: var(--gto-muted);
+      font-size: 0.75rem;
+    }
+
+    .browse-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .browse-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 64px;
+      padding: 14px;
+      border: 1px solid var(--gto-border);
+      border-radius: 11px;
+      background: var(--gto-surface);
+      color: var(--gto-text);
+      text-decoration: none;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .browse-option:hover,
+    .browse-option:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(231, 123, 56, 0.55);
+      outline: none;
+    }
+
+    .browse-option span:first-child {
+      font-size: 0.87rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .browse-arrow {
+      flex: 0 0 auto;
+      color: var(--gto-accent);
+      font-size: 1.1rem;
+    }
+
+    .brand-options {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .brand-option {
+      min-height: 70px;
+    }
+
+    .brand-option span:first-child {
+      font-size: 0.9rem;
+    }
+
+    .browse-results {
+      margin-top: 48px;
+      scroll-margin-top: 24px;
+    }
+
+    .results-topline {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .results-topline h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .results-description {
+      margin: 7px 0 0;
+      color: var(--gto-muted);
+      font-size: 0.83rem;
+      line-height: 1.5;
+    }
+
+    .results-count {
+      color: var(--gto-muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skin-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--gto-border);
+      border-radius: 12px;
+      background: var(--gto-surface);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .skin-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(231, 123, 56, 0.5);
+    }
+
+    .skin-card-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #2b332e;
+    }
+
+    .skin-card-content {
+      padding: 12px;
+    }
+
+    .skin-card-title {
+      margin: 0;
+      font-size: 0.84rem;
+      line-height: 1.4;
+      font-weight: 750;
+      overflow-wrap: anywhere;
+    }
+
+    .skin-card-meta {
+      margin-top: 7px;
+      color: var(--gto-muted);
+      font-size: 0.72rem;
+    }
+
+    .results-state {
+      grid-column: 1 / -1;
+      padding: 35px 20px;
+      border: 1px dashed var(--gto-border);
+      border-radius: 12px;
+      text-align: center;
+      color: var(--gto-muted);
+      line-height: 1.6;
+    }
+
+    .results-state strong {
+      display: block;
+      color: var(--gto-text);
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (min-width: 620px) {
+      .browse-page {
+        padding-top: 52px;
+      }
+
+      .browse-options {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .brand-options {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .skin-card-content {
+        padding: 15px;
+      }
+
+      .skin-card-title {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .browse-options {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .brand-options {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="site-brand" href="../index.html">
+        <span>DST SKIN CATALOGUE</span>
+      </a>
+
+      <div class="site-nav-actions">
+        <a href="GTO-home.html" class="nav-link">GTO Home</a>
+        <a href="GTO-search.html" class="nav-link">Search</a>
+        <button type="button" class="install-button" data-install-button hidden>
+          Install
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="browse-page">
+    <section class="browse-heading">
+      <div class="browse-eyebrow">Global Truck Online</div>
+      <h1>Explore the collection.</h1>
+      <p>
+        Find skins by manufacturer, vehicle category, or individual
+        vehicle type. Pick a collection and explore what's available.
+      </p>
+    </section>
+
+    <section class="browse-section" aria-labelledby="parts-heading">
+      <div class="section-heading">
+        <h2 id="parts-heading">Browse by category</h2>
+        <span class="section-kicker">03 categories</span>
+      </div>
+
+      <div class="browse-options" data-gto-part-options>
+        <a class="browse-option" href="GTO-browse.html?kind=part&value=cabin">
+          <span>Cabin skins</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=part&value=mirror">
+          <span>Mirror skins</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=part&value=trailer">
+          <span>Trailer skins</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="browse-section" aria-labelledby="brands-heading">
+      <div class="section-heading">
+        <h2 id="brands-heading">Browse by brand</h2>
+        <span class="section-kicker">08 manufacturers</span>
+      </div>
+
+      <div class="browse-options brand-options" data-gto-brand-options>
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=volkswagen">
+          <span>Volkswagen</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=mercedes-benz">
+          <span>Mercedes-Benz</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=iveco">
+          <span>Iveco</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=volvo">
+          <span>Volvo</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=scania">
+          <span>Scania</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=chevrolet">
+          <span>Chevrolet</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=ford">
+          <span>Ford</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option brand-option" href="GTO-browse.html?kind=brand&value=fiat">
+          <span>Fiat</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="browse-section" aria-labelledby="vehicles-heading">
+      <div class="section-heading">
+        <h2 id="vehicles-heading">Browse by vehicle type</h2>
+        <span class="section-kicker">07 types</span>
+      </div>
+
+      <div class="browse-options" data-gto-vehicle-options>
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=bodywork">
+          <span>Bodywork</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=dump-truck">
+          <span>Dump truck</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=box-truck">
+          <span>Box truck</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=cattle-truck">
+          <span>Cattle truck</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=4x2-truck">
+          <span>4×2 truck</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=6x2-truck">
+          <span>6×2 truck</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="browse-option" href="GTO-browse.html?kind=vehicle&value=cars">
+          <span>Cars</span>
+          <span class="browse-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="browse-results"
+      id="browse-results"
+      data-gto-browse-results
+      hidden
+      aria-live="polite"
+    >
+      <div class="results-topline">
+        <div>
+          <h2 data-gto-browse-title>Collection</h2>
+          <p class="results-description" data-gto-browse-description></p>
+        </div>
+
+        <span class="results-count" data-gto-browse-count></span>
+      </div>
+
+      <div class="results-grid" data-gto-browse-grid>
+        <div class="results-state">
+          <strong>Loading collection...</strong>
+          Your matching skins will appear here.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-current-year></span> DST SKIN CATALOGUE</p>
+    <p>Global Truck Online collection</p>
+  </footer>
+
+  <script src="../shared/shared-js/common.js" defer></script>
+  <script src="../shared/shared-js/navigation.js" defer></script>
+  <script src="../shared/shared-js/search.js" defer></script>
+  <script src="../shared/shared-js/browse.js" defer></script>
+  <script src="../shared/shared-js/skin-renderer.js" defer></script>
+  <script src="GTO-js/GTO.js" defer></script>
+</body>
+</html>
