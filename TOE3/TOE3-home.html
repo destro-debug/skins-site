@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151a18">
+  <meta name="description" content="Explore custom Truckers of Europe 3 skins in the DST SKIN CATALOGUE.">
+  <title>TOE3 Skins | DST SKIN CATALOGUE</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../shared/shared-styles/site.css">
+  <style>
+    .toe-page {
+      --game-accent: #d99a52;
+      --game-surface: #1d2420;
+      --game-border: rgba(255,255,255,.09);
+      max-width: 1180px;
+      width: calc(100% - 36px);
+      margin: 0 auto;
+      padding-bottom: 64px;
+    }
+
+    .toe-nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--game-border);
+    }
+
+    .toe-brand {
+      color: #f4f0e8;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .toe-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toe-nav-link,
+    .toe-install {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 13px;
+      border: 1px solid var(--game-border);
+      border-radius: 8px;
+      background: transparent;
+      color: #f4f0e8;
+      text-decoration: none;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .toe-nav-link:hover,
+    .toe-install:hover {
+      background: rgba(255,255,255,.07);
+      transform: translateY(-2px);
+    }
+
+    .toe-hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 28px;
+      padding: clamp(30px, 7vw, 68px);
+      border: 1px solid var(--game-border);
+      border-radius: 14px;
+      background:
+        linear-gradient(110deg, rgba(18,25,21,.98), rgba(29,36,32,.88)),
+        #1d2420;
+    }
+
+    .toe-hero::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -85px;
+      top: -95px;
+      border: 1px solid rgba(217,154,82,.18);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 30px rgba(217,154,82,.035),
+        0 0 0 60px rgba(217,154,82,.025);
+      pointer-events: none;
+    }
+
+    .toe-eyebrow {
+      margin: 0 0 14px;
+      color: var(--game-accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .toe-hero h1 {
+      max-width: 650px;
+      margin: 0;
+      color: #f4f0e8;
+      font-size: clamp(34px, 7vw, 66px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+
+    .toe-hero p:not(.toe-eyebrow) {
+      max-width: 490px;
+      margin: 18px 0 0;
+      color: #aab3ac;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .toe-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .toe-primary-link,
+    .toe-secondary-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .toe-primary-link {
+      background: var(--game-accent);
+      color: #171a17;
+    }
+
+    .toe-secondary-link {
+      border: 1px solid var(--game-border);
+      color: #f4f0e8;
+    }
+
+    .toe-primary-link:hover,
+    .toe-secondary-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .toe-section {
+      margin-top: 48px;
+    }
+
+    .toe-section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .toe-section-heading h2 {
+      margin: 0;
+      color: #f4f0e8;
+      font-size: clamp(20px, 4vw, 26px);
+      letter-spacing: -.025em;
+    }
+
+    .toe-section-heading p {
+      margin: 7px 0 0;
+      color: #929c94;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .toe-view-all {
+      color: var(--game-accent);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .toe-category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .toe-category {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px;
+      padding: 22px;
+      border: 1px solid var(--game-border);
+      border-radius: 11px;
+      background: var(--game-surface);
+      color: #f4f0e8;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .toe-category:hover,
+    .toe-brand-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217,154,82,.45);
+    }
+
+    .toe-category small {
+      color: var(--game-accent);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .toe-category strong {
+      margin-top: 25px;
+      font-size: 19px;
+    }
+
+    .toe-category span {
+      margin-top: 6px;
+      color: #929c94;
+      font-size: 12px;
+    }
+
+    .toe-brand-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .toe-brand-link {
+      display: flex;
+      align-items: center;
+      min-height: 66px;
+      padding: 14px;
+      border: 1px solid var(--game-border);
+      border-radius: 9px;
+      background: var(--game-surface);
+      color: #e8e8df;
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .toe-skin-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .toe-skin-grid .skin-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--game-border);
+      border-radius: 10px;
+      background: var(--game-surface);
+      color: #f4f0e8;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .toe-skin-grid .skin-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217,154,82,.45);
+    }
+
+    .toe-skin-grid .skin-card-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #252d28;
+    }
+
+    .toe-skin-grid .skin-card-content {
+      padding: 13px;
+    }
+
+    .toe-skin-grid .skin-card-title {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .toe-skin-grid .skin-card-meta {
+      margin: 7px 0 0;
+      color: #929c94;
+      font-size: 11px;
+    }
+
+    .toe-skin-grid .results-state {
+      grid-column: 1 / -1;
+      padding: 28px 18px;
+      border: 1px dashed var(--game-border);
+      border-radius: 10px;
+      color: #aab3ac;
+      text-align: center;
+    }
+
+    .toe-skin-grid .results-state strong,
+    .toe-skin-grid .results-state span {
+      display: block;
+    }
+
+    .toe-skin-grid .results-state strong {
+      margin-bottom: 7px;
+      color: #f4f0e8;
+    }
+
+    .toe-footer {
+      margin-top: 58px;
+      padding-top: 22px;
+      border-top: 1px solid var(--game-border);
+      color: #929c94;
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .toe-footer a {
+      color: var(--game-accent);
+      text-decoration: none;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 650px) {
+      .toe-brand-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toe-section-heading {
+        align-items: start;
+      }
+
+      .toe-nav {
+        min-height: 66px;
+      }
+
+      .toe-brand {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .toe-page {
+        width: calc(100% - 24px);
+      }
+
+      .toe-nav-link,
+      .toe-install {
+        min-height: 36px;
+        padding: 0 9px;
+        font-size: 11px;
+      }
+
+      .toe-category {
+        padding: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toe-page *,
+      .toe-page *::before,
+      .toe-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="toe-page">
+    <nav class="toe-nav" aria-label="Main navigation">
+      <a class="toe-brand" href="../index.html">
+        DST SKIN CATALOGUE
+      </a>
+
+      <div class="toe-nav-actions">
+        <a class="toe-nav-link" href="TOE3-search.html">
+          Search
+        </a>
+
+        <button
+          class="toe-install"
+          type="button"
+          data-install-button
+          hidden
+        >
+          Install
+        </button>
+      </div>
+    </nav>
+
+    <section class="toe-hero">
+      <p class="toe-eyebrow">DST / Truckers of Europe 3</p>
+
+      <h1>Make every journey yours.</h1>
+
+      <p>
+        Explore custom cabin and trailer skins for Truckers of Europe 3.
+        Find your next look and bring a different identity to the road.
+      </p>
+
+      <div class="toe-hero-actions">
+        <a class="toe-primary-link" href="TOE3-search.html">
+          Explore skins
+        </a>
+
+        <a class="toe-secondary-link" href="#toe-brands">
+          Browse brands
+        </a>
+      </div>
+    </section>
+
+    <section class="toe-section" aria-labelledby="toe-categories-title">
+      <div class="toe-section-heading">
+        <div>
+          <h2 id="toe-categories-title">Browse categories</h2>
+          <p>Choose the type of skin you're looking for.</p>
+        </div>
+
+        <a class="toe-view-all" href="TOE3-browse.html">
+          View all
+        </a>
+      </div>
+
+      <div class="toe-category-grid">
+        <a
+          class="toe-category"
+          href="TOE3-browse.html?kind=part&amp;value=cabin"
+        >
+          <small>01 / Vehicle</small>
+          <strong>Cabin skins</strong>
+          <span>Custom truck appearances</span>
+        </a>
+
+        <a
+          class="toe-category"
+          href="TOE3-browse.html?kind=part&amp;value=trailer"
+        >
+          <small>02 / Cargo</small>
+          <strong>Trailer skins</strong>
+          <span>Give your trailers a new look</span>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="toe-section"
+      id="toe-brands"
+      aria-labelledby="toe-brands-title"
+    >
+      <div class="toe-section-heading">
+        <div>
+          <h2 id="toe-brands-title">Explore brands</h2>
+          <p>Browse the manufacturers represented in TOE3.</p>
+        </div>
+      </div>
+
+      <div class="toe-brand-grid">
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=dawn">
+          Dawn
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=moon">
+          Moon
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=fiora">
+          Fiora
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=volcano">
+          Volcano
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=stream">
+          Stream
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=renovate">
+          Renovate
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=merieles">
+          Merieles
+        </a>
+
+        <a class="toe-brand-link" href="TOE3-browse.html?kind=brand&amp;value=iveco">
+          Iveco
+        </a>
+      </div>
+    </section>
+
+    <section class="toe-section" aria-labelledby="toe-latest-title">
+      <div class="toe-section-heading">
+        <div>
+          <h2 id="toe-latest-title">Recently added</h2>
+          <p data-toe3-home-status>
+            Loading the latest TOE3 skins...
+          </p>
+        </div>
+
+        <a class="toe-view-all" href="TOE3-search.html">
+          Explore all
+        </a>
+      </div>
+
+      <div
+        class="toe-skin-grid"
+        data-toe3-latest-grid
+        aria-live="polite"
+      >
+        <div class="results-state">
+          <strong>Loading collection</strong>
+          <span>Preparing the latest skins...</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="toe-footer">
+      <p>
+        Part of
+        <a href="../index.html">DST SKIN CATALOGUE</a>
+      </p>
+      <p>
+        Truckers of Europe 3 skin collection.
+      </p>
+      <p>
+        © <span data-current-year>2026</span> DST SKIN CATALOGUE
+      </p>
+    </footer>
+  </main>
+
+  <script src="../shared/shared-js/common.js" defer></script>
+  <script src="../shared/shared-js/navigation.js" defer></script>
+  <script src="../shared/shared-js/search.js" defer></script>
+  <script src="../shared/shared-js/browse.js" defer></script>
+  <script src="../shared/shared-js/skin-renderer.js" defer></script>
+  <script src="TOE3-js/TOE3.js" defer></script>
+</body>
+  </html>
+  
