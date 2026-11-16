@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151a18">
+  <meta name="description" content="Browse Truckers of Europe 3 cabin and trailer skin collections by brand in the DST SKIN CATALOGUE.">
+  <title>Browse TOE3 Skins | DST SKIN CATALOGUE</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../shared/shared-styles/site.css">
+
+  <style>
+    .toe-browse-page {
+      max-width: 1100px;
+      width: calc(100% - 36px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      color: #f4f0e8;
+    }
+
+    .toe-browse-nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .toe-browse-brand {
+      color: #f4f0e8;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-decoration: none;
+    }
+
+    .toe-browse-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toe-browse-nav-actions a,
+    .toe-browse-nav-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      background: transparent;
+      color: #f4f0e8;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toe-browse-intro {
+      margin: 44px 0 30px;
+    }
+
+    .toe-browse-eyebrow {
+      margin: 0 0 10px;
+      color: #d99a52;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .toe-browse-intro h1 {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 46px);
+      letter-spacing: -.04em;
+    }
+
+    .toe-browse-intro p {
+      max-width: 540px;
+      margin: 12px 0 0;
+      color: #aab3ac;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .toe-browse-section {
+      margin-top: 38px;
+    }
+
+    .toe-browse-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .toe-browse-heading h2 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: -.025em;
+    }
+
+    .toe-browse-heading p {
+      margin: 7px 0 0;
+      color: #929c94;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .toe-browse-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .toe-browse-tile {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 112px;
+      padding: 17px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 10px;
+      background: #1d2420;
+      color: #f4f0e8;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .toe-browse-tile:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217,154,82,.45);
+    }
+
+    .toe-browse-tile strong {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .toe-browse-tile span {
+      margin-top: 15px;
+      color: #d99a52;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .toe-browse-results {
+      margin-top: 52px;
+      scroll-margin-top: 24px;
+    }
+
+    .toe-results-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .toe-results-heading h2 {
+      margin: 0;
+      font-size: clamp(22px, 4vw, 28px);
+      overflow-wrap: anywhere;
+    }
+
+    .toe-results-heading p {
+      margin: 7px 0 0;
+      color: #aab3ac;
+      font-size: 12px;
+    }
+
+    .toe-results-count {
+      color: #d99a52;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .toe-results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .toe-results-grid .skin-card {
+      display: block;
+      overflow: hidden;
+      min-width: 0;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 10px;
+      background: #1d2420;
+      color: #f4f0e8;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .toe-results-grid .skin-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217,154,82,.45);
+    }
+
+    .toe-results-grid .skin-card-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #252d28;
+    }
+
+    .toe-results-grid .skin-card-content {
+      padding: 13px;
+    }
+
+    .toe-results-grid .skin-card-title {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .toe-results-grid .skin-card-meta {
+      margin: 7px 0 0;
+      color: #929c94;
+      font-size: 11px;
+    }
+
+    .toe-results-grid .results-state {
+      grid-column: 1 / -1;
+      padding: 30px 18px;
+      border: 1px dashed rgba(255,255,255,.13);
+      border-radius: 10px;
+      color: #aab3ac;
+      text-align: center;
+    }
+
+    .toe-results-grid .results-state strong,
+    .toe-results-grid .results-state span {
+      display: block;
+    }
+
+    .toe-results-grid .results-state strong {
+      margin-bottom: 7px;
+      color: #f4f0e8;
+    }
+
+    .toe-browse-footer {
+      margin-top: 58px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      color: #929c94;
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .toe-browse-footer a {
+      color: #d99a52;
+      text-decoration: none;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 700px) {
+      .toe-browse-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 380px) {
+      .toe-browse-page {
+        width: calc(100% - 24px);
+      }
+
+      .toe-browse-brand {
+        font-size: 11px;
+      }
+
+      .toe-browse-nav-actions a,
+      .toe-browse-nav-actions button {
+        min-height: 36px;
+        padding: 0 9px;
+        font-size: 11px;
+      }
+
+      .toe-browse-tile {
+        min-height: 100px;
+        padding: 13px;
+      }
+
+      .toe-results-grid {
+        gap: 10px;
+      }
+
+      .toe-results-grid .skin-card-content {
+        padding: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toe-browse-page *,
+      .toe-browse-page *::before,
+      .toe-browse-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="toe-browse-page">
+    <nav class="toe-browse-nav" aria-label="Main navigation">
+      <a class="toe-browse-brand" href="../index.html">
+        DST SKIN CATALOGUE
+      </a>
+
+      <div class="toe-browse-nav-actions">
+        <a href="TOE3-home.html">Home</a>
+        <a href="TOE3-search.html">Search</a>
+
+        <button
+          type="button"
+          data-back-button
+          aria-label="Go back"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          data-install-button
+          hidden
+        >
+          Install
+        </button>
+      </div>
+    </nav>
+
+    <header class="toe-browse-intro">
+      <p class="toe-browse-eyebrow">TOE3 / Collections</p>
+      <h1>Explore the catalogue.</h1>
+      <p>
+        Browse custom Truckers of Europe 3 skins by manufacturer
+        or choose a category to find exactly what you need.
+      </p>
+    </header>
+
+    <section
+      class="toe-browse-section"
+      aria-labelledby="toe-browse-categories"
+    >
+      <div class="toe-browse-heading">
+        <div>
+          <h2 id="toe-browse-categories">Skin categories</h2>
+          <p>Choose a collection to explore.</p>
+        </div>
+      </div>
+
+      <div class="toe-browse-grid">
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=part&amp;value=cabin"
+        >
+          <strong>Cabin skins</strong>
+          <span>Vehicle collection</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=part&amp;value=trailer"
+        >
+          <strong>Trailer skins</strong>
+          <span>Trailer collection</span>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="toe-browse-section"
+      aria-labelledby="toe-browse-brands"
+    >
+      <div class="toe-browse-heading">
+        <div>
+          <h2 id="toe-browse-brands">Manufacturers</h2>
+          <p>TOE3's in-game manufacturer names.</p>
+        </div>
+      </div>
+
+      <div class="toe-browse-grid">
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=dawn"
+        >
+          <strong>Dawn</strong>
+          <span>DAF</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=moon"
+        >
+          <strong>Moon</strong>
+          <span>MAN</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=fiora"
+        >
+          <strong>Fiora</strong>
+          <span>Ford</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=volcano"
+        >
+          <strong>Volcano</strong>
+          <span>Volvo</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=stream"
+        >
+          <strong>Stream</strong>
+          <span>Scania</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=renovate"
+        >
+          <strong>Renovate</strong>
+          <span>Renault</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=merieles"
+        >
+          <strong>Merieles</strong>
+          <span>Mercedes-Benz</span>
+        </a>
+
+        <a
+          class="toe-browse-tile"
+          href="TOE3-browse.html?kind=brand&amp;value=iveco"
+        >
+          <strong>Iveco</strong>
+          <span>Coming soon</span>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="toe-browse-results"
+      data-toe3-browse-results
+      hidden
+    >
+      <div class="toe-results-heading">
+        <div>
+          <h2 data-toe3-browse-title>Collection</h2>
+          <p data-toe3-browse-description></p>
+        </div>
+
+        <span
+          class="toe-results-count"
+          data-toe3-browse-count
+        ></span>
+      </div>
+
+      <div
+        class="toe-results-grid"
+        data-toe3-browse-grid
+        aria-live="polite"
+      ></div>
+    </section>
+
+    <footer class="toe-browse-footer">
+      <p>
+        <a href="TOE3-home.html">TOE3 Home</a>
+        ·
+        <a href="../index.html">DST SKIN CATALOGUE</a>
+      </p>
+      <p>© <span data-current-year>2026</span> DST SKIN CATALOGUE</p>
+    </footer>
+  </main>
+
+  <script src="../shared/shared-js/common.js" defer></script>
+  <script src="../shared/shared-js/navigation.js" defer></script>
+  <script src="../shared/shared-js/search.js" defer></script>
+  <script src="../shared/shared-js/browse.js" defer></script>
+  <script src="../shared/shared-js/skin-renderer.js" defer></script>
+  <script src="TOE3-js/TOE3.js" defer></script>
+</body>
+</html>
