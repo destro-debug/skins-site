@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101512">
+  <meta name="robots" content="noindex">
+  <title>You're Offline | DST SKIN CATALOGUE</title>
+
+  <link rel="stylesheet" href="./shared/shared-styles/site.css">
+
+  <style>
+    .offline-page {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .offline-content {
+      width: min(100%, 480px);
+      text-align: center;
+    }
+
+    .offline-mark {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 28px;
+      border: 1px solid var(--border, #303a33);
+      border-radius: 22px;
+      background: var(--surface, #171e1a);
+      color: var(--accent, #e6a34b);
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .offline-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--accent, #e6a34b);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .offline-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .offline-content h1 {
+      margin: 0 0 14px;
+      color: var(--text, #f1f0e9);
+      font-size: clamp(2rem, 7vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+    }
+
+    .offline-content p {
+      max-width: 380px;
+      margin: 0 auto 28px;
+      color: var(--muted, #a7afa8);
+      line-height: 1.7;
+    }
+
+    .offline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .offline-actions a,
+    .offline-actions button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border: 1px solid var(--border, #303a33);
+      border-radius: 10px;
+      background: var(--surface, #171e1a);
+      color: var(--text, #f1f0e9);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 650;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+
+    .offline-actions .offline-home {
+      border-color: var(--accent, #e6a34b);
+      background: var(--accent, #e6a34b);
+      color: #171914;
+    }
+
+    .offline-actions a:hover,
+    .offline-actions button:hover {
+      border-color: var(--accent, #e6a34b);
+    }
+
+    .offline-actions a:focus-visible,
+    .offline-actions button:focus-visible {
+      outline: 3px solid var(--accent, #e6a34b);
+      outline-offset: 3px;
+    }
+
+    .offline-note {
+      margin-top: 42px;
+      color: var(--muted, #a7afa8);
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .offline-actions a,
+      .offline-actions button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="offline-page">
+    <section class="offline-content" aria-labelledby="offline-title">
+      <div class="offline-mark" aria-hidden="true">DST</div>
+
+      <div class="offline-status">Connection unavailable</div>
+
+      <h1 id="offline-title">You're off the grid.</h1>
+
+      <p>
+        DST SKIN CATALOGUE couldn't reach the network.
+        Check your connection and try again. Previously cached
+        pages may still be available.
+      </p>
+
+      <div class="offline-actions">
+        <button type="button" id="retry-button">
+          Try again
+        </button>
+
+        <a class="offline-home" href="./index.html">
+          Back to catalogue
+        </a>
+      </div>
+
+      <div class="offline-note">
+        DST SKIN CATALOGUE
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document
+      .getElementById("retry-button")
+      .addEventListener("click", () => {
+        window.location.reload();
+      });
+  </script>
+</body>
+</html>
